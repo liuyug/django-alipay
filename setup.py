@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import os
-from setuptools import setup
+from distutils.core import setup
 
 README = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 
@@ -11,6 +11,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 setup(
     name='django-alipay',
     version='0.1',
+    platforms=['noarch'],
     packages=[
         'alipay',
         'alipay.create_direct_pay_by_user',
@@ -23,7 +24,18 @@ setup(
     license='GPLv3 License',
     description='alipay api for django',
     long_description=README,
-    url='http://www.example.com/',
+    url='https://github.com/liuyug/django-alipay',
     author='Yugang LIU',
     author_email='liuyug@gmail.com',
+    classifiers=[
+        'Environment :: Web Environment',
+        'Framework :: Django',
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: GPLv3 License',
+        'Operating System :: OS Independent',
+        'Programming Language :: Python',
+        'Programming Language :: Python :: 2.6',
+        'Topic :: Internet :: WWW/HTTP',
+        'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+    ],
 )
