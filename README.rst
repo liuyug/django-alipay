@@ -16,7 +16,7 @@ Quick start
 
 2. Include the alipay URLconf in your project urls.py like this::
 
-   url(r'^alipay/', include('alipay.urls')),
+   url(r'^alipay/ptn/', include('alipay.create_partner_trade_by_buyer.ptn.urls')),
 
 3. Run `python manage.py syncdb` to create the alipay models.
 
