@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>AliPay Payment</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ alipay_form.as_table }}
+        </table>
+        <p><input type="hidden" name="alipay" /><input type="image" src="{{ STATIC_URL }}images/alipay/alipay_buy.png" name="submit" alt="AliPay payment" /></p>
+    </form>        
+{% endblock %}

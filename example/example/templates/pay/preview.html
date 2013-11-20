@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{ payment_title }}</h1>
+    <table>
+        <tr>
+            <th>"Item name":</th>
+            <td>{{ item_name }}</td>
+        </tr>
+        <tr>
+            <th>{{ form.price.label }}:</th>
+            <td align="right">{{ form.price.data }}</td>
+        </tr>
+        <tr>
+            <th>{{ form.quantity.label }}:</th>
+            <td align="right">{{ form.quantity.data }}</td>
+        </tr>
+    </table>
+    <form action="{{ action }}" method="post">
+        {{ paid_form.as_p }}
+        <p><input type="submit" value="Pay" /></p>
+    </form>
+{% endblock %}
+
