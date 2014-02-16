@@ -1,6 +1,7 @@
 =======
 alipay
 =======
+|version| |download|
 
 alipay api for django
 
@@ -26,3 +27,10 @@ Quick start
 
 Please see example!!
 
+.. |version| image:: https://img.shields.io/pypi/v/django-alipay.png
+    :target: https://pypi.python.org/pypi/django-alipay/
+    :alt: Version
+
+.. |download| image:: https://img.shields.io/pypi/dm/django-alipay.png
+    :target: https://pypi.python.org/pypi/django-alipay/
+    :alt: Downloads
