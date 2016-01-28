@@ -95,7 +95,7 @@ class AliPayBaseModel(models.Model):
         self.send_signals()
 
     def send_signals(self):
-        raise NotImplementError
+        raise NotImplementedError
 
     def initialize(self, request):
         """Store the data we'll need to make the postback from the request object."""
