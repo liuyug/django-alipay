@@ -34,3 +34,9 @@ Please see example!!
 .. |download| image:: https://img.shields.io/pypi/dm/django-alipay.png
     :target: https://pypi.python.org/pypi/django-alipay/
     :alt: Downloads
+
+LICENSE
+---------
+This is a INTERNET PAID code. For SECURITY reason, the company would not like to open their source code. To keep user out of paying danger, I change LICENSE to MIT from GPL.
+
+BTW: You are welcome to submit your open code.
