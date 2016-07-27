@@ -12,5 +12,5 @@ class AliPayPTNForm(AliPayBaseForm):
     """
     class Meta:
         model = AliPayPTN
-
+        fields = '__all__'
 
