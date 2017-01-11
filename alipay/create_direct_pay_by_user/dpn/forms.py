@@ -11,5 +11,5 @@ class AliPayDPNForm(AliPayBaseForm):
     """
     class Meta:
         model = AliPayDPN
-
+        fields = '__all__'
 
