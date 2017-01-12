@@ -2,8 +2,9 @@
 
 from django import forms
 
-from alipay import conf
-from alipay.widgets import ValueHiddenInput
+from .. import conf
+from ..widgets import ValueHiddenInput
+
 
 class AliPaySendGoodsForm(forms.Form):
     """
@@ -12,9 +13,9 @@ class AliPaySendGoodsForm(forms.Form):
         # base parameters
     service = forms.CharField(widget=ValueHiddenInput(), initial=conf.SERVICE[2])
     partner = forms.CharField(widget=ValueHiddenInput(), max_length=16, initial=conf.PARTNER)
-    # 商户网站使用的编码格式，如utf-8、gbk、gb2312等 
+    # 商户网站使用的编码格式，如utf-8、gbk、gb2312等
     _input_charset = forms.CharField(widget=ValueHiddenInput(), initial='utf-8')
-    # DSA、RSA、MD5三个值可选，必须大写  
+    # DSA、RSA、MD5三个值可选，必须大写
     sign_type = forms.CharField(widget=ValueHiddenInput(), initial='MD5')
     sign = forms.CharField(widget=ValueHiddenInput())
 
@@ -28,5 +29,3 @@ class AliPaySendGoodsForm(forms.Form):
 
     def get_action(self):
         return '%s?_input_charset=%s'% (conf.ALIPAY_GATEWAY, self['_input_charset'].value())
-
-

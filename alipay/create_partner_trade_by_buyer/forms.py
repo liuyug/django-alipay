@@ -2,9 +2,10 @@
 
 from django import forms
 
-from alipay import conf
-from alipay.forms import AliPayPaymentBaseForm
-from alipay.widgets import ValueHiddenInput
+from .. import conf
+from ..forms import AliPayPaymentBaseForm
+from ..widgets import ValueHiddenInput
+
 
 class AliPayPartnerTradeForm(AliPayPaymentBaseForm):
     """
@@ -32,4 +33,3 @@ class AliPayPartnerTradeForm(AliPayPaymentBaseForm):
     receive_zip = forms.CharField(widget=ValueHiddenInput(), max_length=20)
     receive_phone = forms.CharField(widget=ValueHiddenInput(), max_length=30)
     receive_mobile = forms.CharField(widget=ValueHiddenInput())
-

@@ -3,14 +3,15 @@
 import urllib2
 
 from django.db import models
-from alipay import conf
-from alipay.models import AliPayBaseModel
 
-from alipay.create_direct_pay_by_user.dpn.signals import alipay_dpn_flagged, alipay_dpn_successful
+from ...models import AliPayBaseModel
+
+from .signals import alipay_dpn_flagged, alipay_dpn_successful
+
 
 class AliPayDPN(AliPayBaseModel):
     """
-    AliPay DPN 
+    AliPay DPN
     """
     gmt_close = models.DateTimeField(blank=True, null=True)
     extra_common_param = models.CharField(blank=True, null=True, max_length=256)
@@ -30,4 +31,3 @@ class AliPayDPN(AliPayBaseModel):
                 alipay_dpn_flagged.send(sender=self)
             else:
                 alipay_dpn_successful.send(sender=self)
-

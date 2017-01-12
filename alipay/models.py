@@ -3,8 +3,9 @@
 import urllib2
 
 from django.db import models
-from alipay import conf
-from alipay.helpers import duplicate_out_trade_no, address_in_network
+from . import conf
+from .helpers import duplicate_out_trade_no, address_in_network
+
 
 class AliPayBaseModel(models.Model):
     """
@@ -39,9 +40,9 @@ class AliPayBaseModel(models.Model):
     body = models.CharField(blank=True, null=True, max_length=400)
     is_total_fee_adjust = models.CharField(blank=True, null=True, max_length=1) # Y/N
     use_coupon = models.CharField(blank=True, null=True, max_length=1) # Y/N
-    
-    # Non-AliPay Variables 
-    ipaddress = models.IPAddressField(blank=True)
+
+    # Non-AliPay Variables
+    ipaddress = models.GenericIPAddressField(null=True)
     flag = models.BooleanField(default=False, blank=True)
     flag_code = models.CharField(max_length=16, blank=True)
     flag_info = models.TextField(blank=True)
@@ -55,7 +56,7 @@ class AliPayBaseModel(models.Model):
 
     def __unicode__(self):
         return self.notify_id
-    
+
     def is_transaction(self):
         if self.out_trade_no:
             return True
@@ -68,13 +69,13 @@ class AliPayBaseModel(models.Model):
         self.flag_info += info
         if code is not None:
             self.flag_code = code
-        
+
     def verify(self, item_check_callable=None):
         """
         verify alipay notify
         """
         self.response = self._postback()
-        self._verify_postback()  
+        self._verify_postback()
         if not self.flag:
             if self.is_transaction():
                 if not address_in_network(self.ipaddress, conf.ALIPAY_NOTIFY_IP):
@@ -90,7 +91,6 @@ class AliPayBaseModel(models.Model):
             else:
                 # @@@ Run a different series of checks on recurring payments.
                 pass
-        
         self.save()
         self.send_signals()
 
@@ -109,4 +109,3 @@ class AliPayBaseModel(models.Model):
     def _verify_postback(self):
         if self.response != "true":
             self.set_flag("Invalid postback: %s" % self.response)
-

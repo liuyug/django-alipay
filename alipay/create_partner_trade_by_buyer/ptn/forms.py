@@ -2,9 +2,9 @@
 
 from django import forms
 
-from alipay.helpers import make_sign
-from alipay.create_partner_trade_by_buyer.ptn.models import AliPayPTN
-from alipay.forms import AliPayBaseForm
+from .models import AliPayPTN
+from ...forms import AliPayBaseForm
+
 
 class AliPayPTNForm(AliPayBaseForm):
     """
@@ -13,4 +13,3 @@ class AliPayPTNForm(AliPayBaseForm):
     class Meta:
         model = AliPayPTN
         fields = '__all__'
-

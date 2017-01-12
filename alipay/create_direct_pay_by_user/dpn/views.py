@@ -5,8 +5,9 @@ from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 
-from alipay.create_direct_pay_by_user.dpn.models import AliPayDPN
-from alipay.create_direct_pay_by_user.dpn.forms import AliPayDPNForm
+from .models import AliPayDPN
+from .forms import AliPayDPNForm
+
 
 @require_POST
 @csrf_exempt

@@ -3,8 +3,7 @@
 import uuid
 #from django.utils.safestring import mark_safe
 from django.contrib.sites.models import Site
-from django.template import RequestContext
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 
 from alipay.create_partner_trade_by_buyer.forms import AliPayPartnerTradeForm
 from alipay.create_partner_trade_by_buyer.ptn.models import AliPayPTN
@@ -12,22 +11,24 @@ from alipay.helpers import make_sign, get_form_data
 
 from forms import PaymentForm
 
+
 def asks_for_money(request):
     if request.method == 'GET':
         alipay_form = PaymentForm(auto_id=False)
         context = {
-                "alipay_form": alipay_form,
-                }
-        return render_to_response("pay/payment.html", context, context_instance=RequestContext(request))
+            "alipay_form": alipay_form,
+        }
+        return render(request, "pay/payment.html", context)
     # POST method
     site = Site.objects.get_current()
     pay_url = 'http://%s/'%(site.domain)
     form = PaymentForm(request.POST, auto_id=False)
     if not form.is_valid():
         context = {
-                "alipay_form": form,
-                }
-        return render_to_response("pay/payment.html", context, context_instance=RequestContext(request))
+            "alipay_form": form,
+        }
+        return render(request, "pay/payment.html", context)
+    print(site.domain)
     # alipay form
     item_name = ("Django Alipay example")
     alipay_dict = {
@@ -56,7 +57,8 @@ def asks_for_money(request):
             }
     data = get_form_data(alipay_form)
     alipay_form['sign'].field.initial = make_sign(data)
-    return render_to_response("pay/preview.html", context, context_instance=RequestContext(request))
+    return render(request, "pay/preview.html", context)
+
 
 def alipay_return(request):
     """
@@ -87,5 +89,4 @@ def alipay_return(request):
         info.append(trade_status.get(status,('Sorry, catch a error: %s.')% status))
 
     context = {"paid_message": ' '.join(info)}
-    return render_to_response("pay/paid.html", context, context_instance=RequestContext(request))
-
+    return render(request, "pay/paid.html", context)

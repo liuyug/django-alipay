@@ -2,8 +2,9 @@
 
 from django import forms
 
-from alipay.create_direct_pay_by_user.dpn.models import AliPayDPN
-from alipay.forms import AliPayBaseForm
+from .models import AliPayDPN
+from ...forms import AliPayBaseForm
+
 
 class AliPayDPNForm(AliPayBaseForm):
     """
@@ -12,4 +13,3 @@ class AliPayDPNForm(AliPayBaseForm):
     class Meta:
         model = AliPayDPN
         fields = '__all__'
-

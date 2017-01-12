@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib import admin
-from alipay.create_partner_trade_by_buyer.ptn.models import AliPayPTN
+from .models import AliPayPTN
 
 class AliPayPTNAdmin(admin.ModelAdmin):
     date_hierarchy = 'gmt_payment'

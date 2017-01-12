@@ -5,6 +5,16 @@ alipay
 
 alipay api for django
 
+testing pass on Django 1.10.5
+
+Install
+=======
+::
+
+    pip install -r requirements.txt
+    pip install django-alipay
+
+
 Quick start
 -----------
 
@@ -12,18 +22,21 @@ Quick start
 
     INSTALLED_APPS = (
         ...
-        'alipay...',
+        'alipay.create_direct_pay_by_user.dpn.apps.AlipayDPNConfig',
+        'alipay.create_partner_trade_by_buyer.ptn.apps.AlipayPTNConfig',
     )
 
 2. Include the alipay URLconf in your project urls.py like this::
 
     url(r'^alipay/ptn/', include('alipay.create_partner_trade_by_buyer.ptn.urls')),
 
-3. Run `python manage.py syncdb` to create the alipay models.
+3. Run ``python manager.py migrate`` to create the alipay models.
 
-4. Start the development server and visit http://127.0.0.1:8000/admin/ to create a poll (you'll need the Admin app enabled).
+4. Create admin user. ``python manager.py createsuperuser``
 
-5. Visit http://127.0.0.1:8000/alipay/ to participate in the poll.
+5. Start the development server and visit ``http://127.0.0.1:8000/admin/`` to create a poll (you'll need the Admin app enabled).
+
+6. Visit ``http://127.0.0.1:8000/alipay/`` to participate in the poll.
 
 Please see example!!
 

@@ -3,9 +3,9 @@
 from django import forms
 from django.utils.safestring import mark_safe
 
-from alipay import conf 
-from alipay.widgets import ValueHiddenInput
-from alipay.helpers import make_sign, get_form_data, urldecode
+from . import conf
+from .widgets import ValueHiddenInput
+from .helpers import make_sign, get_form_data, urldecode
 
 
 class AliPayPaymentBaseForm(forms.Form):

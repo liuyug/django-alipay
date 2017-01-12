@@ -11,6 +11,7 @@ from alipay.create_partner_trade_by_buyer.ptn.signals import alipay_ptn_successf
 from alipay.send_goods_confirm_by_platform.forms import AliPaySendGoodsForm
 from alipay.helpers import make_sign, get_form_data
 
+
 def alipay_send_goods(trade_obj):
     """Send Goods to buyer"""
     sign_type = 'MD5'
@@ -27,6 +28,7 @@ def alipay_send_goods(trade_obj):
     data['sign'] = make_sign(data)
     return urllib2.urlopen(form.get_action(),urlencode(data)).read()
 
+
 def alipay_dpn_check(dpn_obj):
     """
     check alipay notify
@@ -34,6 +36,7 @@ def alipay_dpn_check(dpn_obj):
     if dpn_obj.trade_status != "TRADE_FINISHED":
         return (True, 'trade status: %s'% dpn_obj.trade_status)
     return (False, None)
+
 
 def alipay_ptn_check(ptn_obj):
     """
@@ -43,8 +46,10 @@ def alipay_ptn_check(ptn_obj):
         return (True, 'trade status: %s'% ptn_obj.trade_status)
     return (False, None)
 
+
 def alipay_show_me_the_money(sender, **kwargs):
     trade_obj = sender
+
 
 def alipay_wait_seller_send_goods(sender, **kwargs):
     """
@@ -58,4 +63,3 @@ def alipay_wait_seller_send_goods(sender, **kwargs):
 alipay_dpn_successful.connect(alipay_show_me_the_money, dispatch_uid='alipay_dpn_successful')
 alipay_ptn_successful.connect(alipay_show_me_the_money, dispatch_uid='alipay_ptn_successful')
 alipay_ptn_flagged.connect(alipay_wait_seller_send_goods, dispatch_uid='alipay_ptn_flagged')
-

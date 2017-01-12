@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
     <h1>AliPay Payment</h1>
     <form action="" method="post">
@@ -6,6 +7,9 @@
         <table>
             {{ alipay_form.as_table }}
         </table>
-        <p><input type="hidden" name="alipay" /><input type="image" src="{{ STATIC_URL }}images/alipay/alipay_buy.png" name="submit" alt="AliPay payment" /></p>
-    </form>        
+        <p>
+        <input type="hidden" name="alipay" />
+        <input type="image" src="{% static "images/alipay/alipay_buy.png" alt="AliPay payment" %}" name="submit" />
+        </p>
+    </form>
 {% endblock %}

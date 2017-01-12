@@ -5,7 +5,7 @@ import socket
 import struct
 import urllib
 
-from alipay import conf
+from . import conf
 
 def address_in_network(ip, net):
     """
@@ -31,7 +31,7 @@ def make_sign(data, private_key=conf.PRIVATE_KEY):
 
     query_list.sort()
     text = '%s%s'% ('&'.join(query_list), private_key)
-    if hash == 'MD5': 
+    if hash == 'MD5':
         md5 = hashlib.md5()
         md5.update(text.encode('utf-8'))
         sign = md5.hexdigest()

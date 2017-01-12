@@ -5,8 +5,9 @@ from django.http import HttpResponse
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 
-from alipay.create_partner_trade_by_buyer.ptn.forms import AliPayPTNForm
-from alipay.create_partner_trade_by_buyer.ptn.models import AliPayPTN
+from .forms import AliPayPTNForm
+from .models import AliPayPTN
+
 
 @require_POST
 @csrf_exempt

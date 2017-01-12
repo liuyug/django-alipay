@@ -2,6 +2,7 @@
 
 from django import forms
 
+
 class PaymentForm(forms.Form):
     price = forms.IntegerField(label=('Item price'), initial=1)
     quantity = forms.IntegerField(label=('Quantity'), initial=1)
@@ -26,5 +27,3 @@ class PaymentForm(forms.Form):
                 row_ender = u'',
                 help_text_html = u'%s',
                 errors_on_separate_row = False)
-
-

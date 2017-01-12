@@ -1,9 +1,9 @@
 
 from django import forms
 
-from alipay import conf
-from alipay.forms import AliPayPaymentBaseForm
-from alipay.widgets import ValueHiddenInput
+from .. import conf
+from ..forms import AliPayPaymentBaseForm
+from ..widgets import ValueHiddenInput
 
 class AliPayDirectPayForm(AliPayPaymentBaseForm):
     """
