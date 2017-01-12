@@ -11,8 +11,10 @@ from alipay.create_partner_trade_by_buyer.ptn import views as ptn_views
 
 
 urlpatterns = (
-    url(r'^$', views.asks_for_money, name='home'),
-    url(r'^alipay/return/$', views.alipay_return),
+    url(r'^$', views.ptn_asks_for_money, name='home'),
+    url(r'dpn/^$', views.dpn_asks_for_money, name='dpn'),
+    url(r'^alipay/ptn/return/$', views.ptn_alipay_return),
+    url(r'^alipay/dpn/return/$', views.dpn_alipay_return),
 
     # alipay urls
     url(r'^alipay/dpn/$',

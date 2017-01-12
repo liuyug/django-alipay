@@ -17,13 +17,19 @@ Install
 
 Quick start
 -----------
+.. note::
+
+    create_partner_trade_by_buyer and send_goods_confirm_by_platform have been shutdown by Alipay.
+
+    担保交易：已经被支付宝取消
+
+    即时到账：因个人限制，无法签约即时到账服务，无法调试。
 
 1. Add "alipay" to your INSTALLED_APPS setting like this::
 
     INSTALLED_APPS = (
         ...
         'alipay.create_direct_pay_by_user.dpn.apps.AlipayDPNConfig',
-        'alipay.create_partner_trade_by_buyer.ptn.apps.AlipayPTNConfig',
     )
 
 2. Include the alipay URLconf in your project urls.py like this::
