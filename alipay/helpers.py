@@ -16,7 +16,7 @@ def address_in_network(ip, net):
     ipaddr = struct.unpack('L',socket.inet_aton(ip))[0]
     for cur_net in net:
         netaddr,bits = cur_net.split('/')
-        netmask = struct.unpack('L',socket.inet_aton(netaddr))[0] & ((2L<<int(bits)-1) - 1)
+        netmask = struct.unpack('L',socket.inet_aton(netaddr))[0] & ((2<<int(bits)-1) - 1)
         if ipaddr & netmask == netmask:
             return True
     return False

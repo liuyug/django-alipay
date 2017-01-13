@@ -27,7 +27,7 @@ def dpn(request, item_check_callable=None):
     if form.is_valid():
         try:
             dpn_obj = form.save(commit=False)
-        except Exception, e:
+        except Exception as e:
             flag = 'Exception while processing: %s'% e
 
     else:
