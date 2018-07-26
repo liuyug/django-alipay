@@ -21,7 +21,7 @@ setup(
         'alipay.send_goods_confirm_by_platform',
     ],
     include_package_data=True,
-    license='GPLv3 License',
+    license='MIT',
     description='alipay api for django',
     long_description=README,
     url='https://github.com/liuyug/django-alipay',
